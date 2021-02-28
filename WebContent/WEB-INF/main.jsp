@@ -47,7 +47,7 @@
 	<!---- Toast ---->
 	<div class="section4">
 		<div class="sectionWrap" style="display:flex;">
-			<div id="chart"></div>
+		    <div id="chart_div"></div>
 			<div id="grid" style="width: 560px;"></div>
 		</div>
 	</div>
@@ -160,9 +160,7 @@
 	</div><!-- End Section3 -->
 
 </div><!-- End Main -->
-
-<link rel="stylesheet" href="https://uicdn.toast.com/chart/latest/toastui-chart.min.css" />
-<script src="https://uicdn.toast.com/chart/latest/toastui-chart.min.js"></script>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <link rel="stylesheet" href="https://uicdn.toast.com/tui-grid/latest/tui-grid.css" />
 ...
 <script src="https://uicdn.toast.com/tui-grid/latest/tui-grid.js"></script>
@@ -172,31 +170,9 @@ $(document).ready(function(){
 	getNotice();
 	getGrid();
 	
-	const el = document.getElementById('chart');
- 	const data = {
-	        categories: ['Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
-	        series: [
-	          {
-	            name: 'Budget',
-	            data: [5000, 3000, 5000, 7000, 6000, 4000, 1000],
-	          },
-	          {
-	            name: 'Income',
-	            data: [8000, 4000, 7000, 2000, 6000, 3000, 5000],
-	          },
-	          {
-	            name: 'Expenses',
-	            data: [4000, 4000, 6000, 3000, 4000, 5000, 7000],
-	          },
-	        ],
-	      };    
-	 
-	const options = {
-			  chart: { width: 640, height: 400 },
-			};
-
-	const chart = toastui.Chart.barChart({ el, data, options });
-
+	google.charts.load('current', {packages: ['corechart', 'bar']});
+	google.charts.setOnLoadCallback(drawMaterial);
+	
 	// BMI 계산 함수
 	$("#body_check").on("click",function(){
 		 $.ajax({
@@ -266,6 +242,39 @@ $(document).ready(function(){
 		});
 	} 
  	
+	function drawMaterial() {
+		$.ajax({
+			url:"ajax/chart",
+			type:"GET",
+			datatype:"json",
+			success:function(result){
+				var jsonData = JSON.parse(result);
+				var data = new google.visualization.DataTable(jsonData);
+				console.log(jsonData);
+				
+				var materialOptions = {
+					chart: {
+					  title: '근육부위별 운동 수'
+					},
+/* 					hAxis: {
+					  title: '난이도',
+					  minValue: 0,
+					},
+					vAxis: {
+					  title: '근육부위'
+					}, */
+					bars: 'horizontal',
+					width: 640,
+					height: 400,
+				};
+				
+				var materialChart = new google.charts.Bar(document.getElementById('chart_div'));
+				materialChart.draw(data, materialOptions);
+			}
+			});
+
+    }
+ 	
 	function getGrid(){
 		$.ajax({
 			url:"ajax/grid",
@@ -273,7 +282,7 @@ $(document).ready(function(){
 			datatype:"json",
 			success:function(result){
 				var gridData = JSON.parse(result);
-				
+
 				const grid = new tui.Grid({
 				      el: document.getElementById('grid'),
 				      data: gridData,
