@@ -108,6 +108,7 @@
 	}
 	#main .section4{
 		width: 100%;
+		height:405px;
 		margin: 10px auto;
 	}
 	

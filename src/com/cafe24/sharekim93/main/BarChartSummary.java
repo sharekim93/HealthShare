@@ -13,8 +13,8 @@ import javax.servlet.http.HttpServletResponse;
 import com.cafe24.sharekim93.dao.InfoBoardDAO;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
-@WebServlet("/ajax/chart")
-public class ChartSummary extends HttpServlet {
+@WebServlet("/ajax/barchart")
+public class BarChartSummary extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

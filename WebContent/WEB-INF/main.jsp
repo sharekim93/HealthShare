@@ -46,9 +46,13 @@
 	
 	<!---- Toast ---->
 	<div class="section4">
-		<div class="sectionWrap" style="display:flex;">
-		    <div id="chart_div"></div>
+		<div class="sectionWrap">
+		    <div class="left_p">
+		    <div id="chart"></div>
+		    </div>
+		    <div class="right_p">
 			<div id="grid" style="width: 560px;"></div>
+			</div>
 		</div>
 	</div>
 	
@@ -160,7 +164,9 @@
 	</div><!-- End Section3 -->
 
 </div><!-- End Main -->
-<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+<link rel="stylesheet" href="https://uicdn.toast.com/chart/latest/toastui-chart.min.css" />
+<script src="https://uicdn.toast.com/chart/latest/toastui-chart.min.js"></script>
 <link rel="stylesheet" href="https://uicdn.toast.com/tui-grid/latest/tui-grid.css" />
 ...
 <script src="https://uicdn.toast.com/tui-grid/latest/tui-grid.js"></script>
@@ -169,9 +175,8 @@
 $(document).ready(function(){
 	getNotice();
 	getGrid();
+	drawChart();
 	
-	google.charts.load('current', {packages: ['corechart', 'bar']});
-	google.charts.setOnLoadCallback(drawMaterial);
 	
 	// BMI 계산 함수
 	$("#body_check").on("click",function(){
@@ -242,36 +247,34 @@ $(document).ready(function(){
 		});
 	} 
  	
-	function drawMaterial() {
+	function drawChart() {
 		$.ajax({
-			url:"ajax/chart",
+			url:"ajax/treemap",
 			type:"GET",
 			datatype:"json",
 			success:function(result){
-				var jsonData = JSON.parse(result);
-				var data = new google.visualization.DataTable(jsonData);
-				console.log(jsonData);
-				
-				var materialOptions = {
-					chart: {
-					  title: '근육부위별 운동 수'
-					},
-/* 					hAxis: {
-					  title: '난이도',
-					  minValue: 0,
-					},
-					vAxis: {
-					  title: '근육부위'
-					}, */
-					bars: 'horizontal',
-					width: 640,
-					height: 400,
-				};
-				
-				var materialChart = new google.charts.Bar(document.getElementById('chart_div'));
-				materialChart.draw(data, materialOptions);
+				const el = document.getElementById('chart');
+				const options = {
+						chart: { title:{text:'난이도별 운동부위 수'},width: 560, height: 385 },
+						series: { dataLabels: { visible: true },zoomable: true },
+						theme: {
+						    title: {
+						      fontSize: 20,
+						      fontWeight: 400
+						    },
+						    series: {
+						        dataLabels: {
+						          fontSize: 20,
+						          fontWeight: '800',
+						          borderWidth:100
+								}
+							}
+						  }
+						};
+				const data = JSON.parse(result);				
+				const chart = toastui.Chart.treemapChart({el, data, options});
 			}
-			});
+		});
 
     }
  	
@@ -282,7 +285,7 @@ $(document).ready(function(){
 			datatype:"json",
 			success:function(result){
 				var gridData = JSON.parse(result);
-
+				
 				const grid = new tui.Grid({
 				      el: document.getElementById('grid'),
 				      data: gridData,
