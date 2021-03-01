@@ -255,7 +255,7 @@ $(document).ready(function(){
 			success:function(result){
 				const el = document.getElementById('chart');
 				const options = {
-						chart: { title:{text:'난이도별 운동부위 수'},width: 560, height: 385 },
+						chart: { title:{text:'난이도별 운동부위 수(TreeMap Chart)'},width: 560, height: 385 },
 						series: { dataLabels: { visible: true },zoomable: true },
 						theme: {
 						    title: {
