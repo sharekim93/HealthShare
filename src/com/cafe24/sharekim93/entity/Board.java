@@ -1,7 +1,6 @@
 package com.cafe24.sharekim93.entity;
 
 public class Board {
-	private int rnum;
 	private int bno;
 	private String btitle;
 	private String bname;
@@ -31,16 +30,6 @@ public class Board {
 
 	public Board(int bno, String btitle, String bname, String bdate, int bhit) {
 		super();
-		this.bno = bno;
-		this.btitle = btitle;
-		this.bname = bname;
-		this.bdate = bdate;
-		this.bhit = bhit;
-	}
-	
-	public Board(int rnum, int bno, String btitle, String bname, String bdate, int bhit) {
-		super();
-		this.rnum = rnum;
 		this.bno = bno;
 		this.btitle = btitle;
 		this.bname = bname;
@@ -82,10 +71,10 @@ public class Board {
 
 	@Override
 	public String toString() {
-		return "Board [rnum=" + rnum + ", bno=" + bno + ", btitle=" + btitle + ", bname=" + bname + ", bdate=" + bdate
-				+ ", bhit=" + bhit + ", bcontent=" + bcontent + ", bip=" + bip + ", bpass=" + bpass + ", img=" + img
-				+ ", bcategory=" + bcategory + ", bhidden=" + bhidden + ", level=" + level + ", depth1=" + depth1
-				+ ", depth2=" + depth2 + "]";
+		return "Board [bno=" + bno + ", btitle=" + btitle + ", bname=" + bname + ", bdate=" + bdate + ", bhit=" + bhit
+				+ ", bcontent=" + bcontent + ", bip=" + bip + ", bpass=" + bpass + ", img=" + img + ", bcategory="
+				+ bcategory + ", bhidden=" + bhidden + ", level=" + level + ", depth1=" + depth1 + ", depth2=" + depth2
+				+ "]";
 	}
 
 	public int getBno() {
@@ -150,14 +139,6 @@ public class Board {
 
 	public void setBpass(String bpass) {
 		this.bpass = bpass;
-	}
-
-	public int getRnum() {
-		return rnum;
-	}
-
-	public void setRnum(int rnum) {
-		this.rnum = rnum;
 	}
 
 	public String getImg() {

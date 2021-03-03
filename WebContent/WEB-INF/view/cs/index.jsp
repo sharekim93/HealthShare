@@ -48,26 +48,24 @@
 	
 		function getFaq(){
 			$.ajax({
-				url:"getlist.board",
+				url:"faq.cs",
 				type:"get",
-				data:{c:"1"},
 				dataType:"json",
 				success:function(data){
 					var con ="";
 					$(".acc_content").html("");
-					for(var i=0;i<4;i++){
+					for(i in data){
 					    con += "<div class='panel-heading'>";
 					    con += "  <h4 class='panel-title'>";
-					    con += "    <a data-toggle='collapse' data-parent='#FAQ' href='#FAQ"+i+"'>"+data.list[i].btitle+"</a>";
+					    con += "    <a data-toggle='collapse' data-parent='#FAQ' href='#FAQ"+i+"'>"+data[i].btitle+"</a>";
 					    con += "  </h4>";
 					    con += "</div>";
 					    if(i==0){ con += "<div id='FAQ"+i+"' class='panel-collapse collapse in'>"; }
 					    else{ con += "<div id='FAQ"+i+"' class='panel-collapse collapse'>"; }
 					    con += "<div class='panel-body'>";
-					    con += data.list[i].bcontent;  
+					    con += data[i].bcontent;  
 					    con += "</div>";
 					    con += "</div>";
-						if(i==data.list.length-1){break;}
 					}
 					$(".acc_content").html(con);
 				}
