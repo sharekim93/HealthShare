@@ -3,23 +3,19 @@
 <div class="container panel board">
 	<h2>고객센터</h2>
 	<!-- Section 4 -->
-<div>
-	
-		<h3>자주 묻는 질문</h3>
-	
+	<div>
+		<h3 style="margin-top:50px;">자주 묻는 질문</h3>
 		<div class="wrap">
-		
 			<!-- accordion -->
 			<div class="panel-group" id="accordion">
-			  <div class="panel panel-default acc_content">
-
-			  </div><!-- End Panel -->
+			  <div class="panel panel-default acc_content"></div>
 			</div><!-- End accordion -->
 		</div><!-- End Wrap -->
-	</div><!-- End Section 4 -->
-
-	<h3 class="panel-heading">메일 문의</h3>
+	</div>
+	<div>
+	<h3 class="panel-heading" style="margin-top:50px;">메일 문의</h3>
 	<table class="table table-striped">
+	<caption>문의 내용을 작성해주시면 관리자 이메일로 내용이 전달됩니다. 받아보실 연락처를 남겨주세요.</caption>
 	<tbody>
 		<tr><th scope="row">제목</th><td><input type="text" id="title" class="form-control"></td></tr> 
 		<!-- <tr><th scope="row">이메일</th><td><input type="text" id="from" class="form-control"></td></tr> --> 
@@ -27,6 +23,7 @@
 		<tr><td colspan="2" class="text-right"><input type="button" value="보내기" id="submit" class="btn btn-primary"></td></tr>
 	</tbody>
 	</table>
+	</div>
 </div>
 <script src="//cdn.ckeditor.com/4.16.0/standard/ckeditor.js"></script>
 <script>
