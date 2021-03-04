@@ -136,7 +136,8 @@
 			success:function(data){
 				let table ="";
 				let obj = JSON.parse(data);
-
+				
+				totalCnt = obj.count;
 				pageNum = obj.page;
 				pageAll = obj.pageAll;
 				startNum = obj.startNum;
@@ -145,7 +146,7 @@
 				$(".table tbody").html("");
 				for(i in obj.list){
 					table +="<tr>";
-					table +="<td>" + obj.list[i].bno + "</td>";
+					table +="<td>" + (totalCnt-10*(pageNum-1)-i) + "</td>";
 					if(category!=4){
 					table +="<td colspan='2'><a href='detail.board?bno="+obj.list[i].bno+"&c="+category+"'>" + obj.list[i].btitle + "</a></td>";
 					}
