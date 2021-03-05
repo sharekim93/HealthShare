@@ -14,15 +14,15 @@ public class LoginAction implements MemberAction{
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String	mid = request.getParameter("mid");
-		String	mpass = request.getParameter("mpass");
-		String	chkbox = request.getParameter("chkbox");
+		String mid = request.getParameter("mid");
+		String mpass = request.getParameter("mpass");
+		String chkbox = request.getParameter("chkbox");
 		String kakaoid = (String) request.getAttribute("kakaoid");		
 		int result =-1; int kakaoresult =-1;
-		if(kakaoid!=null) {mid = new LoginService().Login(kakaoid);}
+		if(kakaoid!=null) {mid = new LoginService().Login(kakaoid);result=1;}
 		else {result = new LoginService().Login(mid, mpass);}
 		
-		if(mid!=""&&mid!=null) {kakaoresult=1;result=1;}
+		if(mid!=""&&mid!=null) {kakaoresult=1;}
 			if(result>0){
 				request.getSession().setAttribute("id", mid);
 				if(chkbox!=null){

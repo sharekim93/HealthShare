@@ -15,7 +15,7 @@ public class LoginService {
 	public String Login(String kakaoid) {
 		String result="";
 		Member member = MemberDAO.getInstance().kakaoLogin(kakaoid);
-		if(member!=null) {result=member.getMid();}
+		if(member!=null) {result = member.getMid();}
 		return result;
 		
 	}
