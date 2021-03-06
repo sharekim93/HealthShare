@@ -94,7 +94,7 @@
 	
 	#main .section2{
 		width: 100%;
-		height:405px;
+		height:450px;
 		background-color:#f3f4f4;
 		margin: 0 auto;
 		padding: 10px auto;
