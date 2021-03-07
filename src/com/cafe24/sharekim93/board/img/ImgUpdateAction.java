@@ -21,12 +21,12 @@ public class ImgUpdateAction implements ImgBoardAction {
 		PrintWriter out = response.getWriter();
 		MultipartRequest multi = new MultipartRequest(request, path,1024*1024*5,"UTF-8");
 		
-		int 	bno  = Integer.parseInt(request.getParameter("bno"));
+		int 	bno  = Integer.parseInt(multi.getParameter("bno"));
 		String bname = multi.getParameter("bname");
 		String bpass = multi.getParameter("bpass");
 		String btitle = multi.getParameter("btitle");
-		String bcontent = multi.getParameter("bcontent");
-		String img 		= multi.getFilesystemName("img");
+		String bcontent = multi.getParameter("bcontents");
+		String img 		= multi.getFilesystemName("file");
 		String current	= multi.getParameter("current");
 		
 		Board dto = new Board();
@@ -42,7 +42,7 @@ public class ImgUpdateAction implements ImgBoardAction {
 		ImgBoardService service = new ImgBoardService();
 		result = service.updateBoard(dto);
 		
-		if(result>0) {out.println("<script>alert('수정성공');location.href='list.pic;</script>");}
+		if(result>0) {out.println("<script>alert('수정성공');location.href='list.pic';</script>");}
 		else{out.println("<script>alert('수정실패');history.go(-1);</script>");}
 	}
 }
