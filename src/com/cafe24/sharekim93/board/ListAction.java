@@ -35,6 +35,8 @@ public class ListAction implements BoardAction {
 		String page_		= request.getParameter("p");
 		String category_	= request.getParameter("c");
 		String source_		= request.getParameter("json");
+		String level_		= request.getParameter("level");
+		String depth1_		= request.getParameter("muscle");
 		
 		String field		= "btitle";
 		String query		= "";
@@ -43,10 +45,12 @@ public class ListAction implements BoardAction {
 		String source		= "";
 		int count=1;
 		
-		if(field_!=null&&!field_.equals("")) {field=field_;}
-		if(query_!=null&&!query_.equals("")) {query=query_;}
-		if(page_!=null&&!page_.equals("")) {page=Integer.parseInt(page_);}
+		if(field_!=null&&field_!="") {field=field_;}
+		if(query_!=null&&query_!="") {query=query_;}
+		if(page_!=null&&page_!="") {page=Integer.parseInt(page_);}
 		if(category_!=null&&category_!="") {category=category_;}
+		if(level_!=null&&level_!="") {levels=levels+" WHERE LEVEL = "+level_;}
+		if(depth1_!=null&&depth1_!="") {depths=depths+" WHERE DEPTH1 = "+depth1_;}
 		if(source_!=null&&source_!="") { 
 			source=source_;
 			JsonParser parser = new JsonParser();
@@ -81,11 +85,11 @@ public class ListAction implements BoardAction {
 		if(category.equals("4")) {service = new Board4Service();}
 		if(category.equals("5")) {service = new InfoBoardService();}
 		
-		if(source_!=null&&source_!="") {
-			count  = service.getFilteredListCount(levels, depths);
-			list = InfoBoardDAO.getInstance().getList(page,levels,depths);
+		if((source_!=null&&source_!="")||(level_!=null&&level_!="")||(depth1_!=null&&depth1_!="")) {
+			count  = service.getFilteredListCount(levels, depths,field,query);
+			list = InfoBoardDAO.getInstance().getList(page,levels,depths,field,query);
 		}
-		else { 
+		else {
 			count  = service.getListCount(field, query);
 			list = service.getList(field,query,page);
 			}

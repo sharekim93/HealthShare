@@ -251,6 +251,38 @@ public class InfoBoardDAO {
 		return list;
 	}
 	
+	public List<Board> getList(int page,String levels,String depths,String field,String query) {
+		List<Board> list = new ArrayList<>();
+		String sql = "SELECT * FROM (SELECT a.* FROM ("+levels+") a ,("+depths+") b where a.BNO=b.BNO) c"
+				   + " WHERE c."+field+" LIKE ? ORDER BY c.BDATE DESC LIMIT ?,10 ";
+		Connection conn=null; PreparedStatement stmt=null; ResultSet rset=null;
+		try{
+			conn = getConnection();
+			stmt = conn.prepareStatement(sql);
+			stmt.setString(1, "%"+query+"%");
+			stmt.setInt(2, (page-1)*10);
+			rset= stmt.executeQuery();
+			while(rset.next()) {
+				Board board = new Board(rset.getInt("bno"),
+										rset.getString("btitle"),
+										rset.getString("bname"),
+										rset.getString("bdate").split(" ")[0],
+										rset.getInt("bhit"));
+				board.setLevel(rset.getString("level"));
+				board.setDepth1(rset.getString("depth1"));
+				board.setDepth2(rset.getString("depth2"));
+				list.add(board);
+			}
+		}
+		catch(Exception e){e.printStackTrace();}
+		finally {
+			if(rset!=null) {try {rset.close();} catch (SQLException e) {e.printStackTrace();}}
+			if(stmt!=null) {try {stmt.close();} catch (SQLException e) {e.printStackTrace();}}
+			if(conn!=null) {try {conn.close();} catch (SQLException e) {e.printStackTrace();}}
+		}
+		return list;
+	}
+	
 	public int getListCount(String field, String query) {
 		int count=0;
 		String sql = "SELECT count(*) cnt FROM"
@@ -274,13 +306,14 @@ public class InfoBoardDAO {
 		return count;
 	}
 	
-	public int getFilteredListCount(String levels, String depths) {
+	public int getFilteredListCount(String levels, String depths,String field,String query) {
 		int count=0;
-		String sql = "SELECT count(*) cnt FROM ("+levels+") a ,("+depths+") b where a.BNO=b.BNO";
+		String sql = "SELECT count(*) cnt FROM ("+levels+") a ,("+depths+") b where a.BNO=b.BNO AND a."+field+" like ?";
 		Connection conn=null; PreparedStatement stmt=null; ResultSet rset=null;
 		try{
 			conn = getConnection();
 			stmt = conn.prepareStatement(sql);
+			stmt.setString(1, "%"+query+"%");
 			rset= stmt.executeQuery();
 			if(rset.next()) {count=rset.getInt("cnt");}
 		}
