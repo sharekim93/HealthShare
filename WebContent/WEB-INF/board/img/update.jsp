@@ -4,6 +4,9 @@
 		<h3>이미지 수정</h3>
 		<form action="update.pic" method="post" enctype="multipart/form-data" id="form_write">
 			<fieldset>
+				<div class="hidden">
+					<input type="text" name="bno" value="${b.bno}">
+				</div>
 				<div class="form-group">
 					<label for="bname">이름</label>
 					<input type="text" id="bname" name="bname" class="form-control" readonly value=${b.bname }>
