@@ -10,7 +10,8 @@
 					<ul class="list-group">
 						<c:forEach var="i" items="${levels}" varStatus="st">
 						<li class="list-group-item">
-							<label for="${i}">${i}</label><input type="checkbox" id="${i}" value="${i}" class="filter level">
+							<label for="${i}">${i}</label>
+							<input type="checkbox" id="${i}" value="${i}" class="filter level" ${(empty param.level)? "":((i eq param.level)? "checked":"")}>
 						</li>
 						</c:forEach>
 					</ul>
@@ -67,10 +68,11 @@
 	</div>
 
 	<!-- hidden value -->
-	<form id="delete">
+	<form id="hidden">
 		<input type="hidden" name="bpass" id="bpass" value="">
 		<input type="hidden" name="bno" id="bno" value="">
 		<input type="hidden" name="c" id="c" value="5">
+		<input type="hidden" id="m" value="${(empty param.muscle)? '':param.muscle}">
 	</form>
 <script>	
 	$(document).ready(function(){
@@ -79,36 +81,17 @@
 		setIndex(pageNum,pageAll);
 		setPager(pageNum,startNum,lastNum);
 		setNav();
-		setFilter();
 		
 		$(".btn-search").click(function(){
 			field=$("#sch_field").val();
 			query=$("#q").val();
-			find(field,query,category);
+			setFilterData();
+			setFilter(json,pageNum,field,query);
 		});
 		
 		$(".filter").on("click",function(){
-			filter=true;
-			map.clear();
-			pageNum=1;
-			$(":checkbox").each(function(){
-				if(this.checked){
-					query = this.value;
-					if($(this).is(".muscle")==true){field="depth1";}
-					else{field="level";}
-					map.set(query,field);
-					}
-			});
-			json="[";
-			let first = true;
-			map.forEach(function(value,key,map){
-				if(first){first=false;}
-				else{json+=",";}
-				json += "{\""+value+"\":\""+key+"\"}";
-			});
-			json+="]";
-			
-			setFilter(json,pageNum);
+			setFilterData();
+			setFilter(json,pageNum,field,query);
 		});
 	});
 	
@@ -124,31 +107,9 @@
 	var map			= new Map();
 	var json		= "";
 	var filter		= false;
-	function setNav(){
-		$.ajax({
-			url:"getNavMuscle.board",
-			type:"GET",
-			async:false,
-			success:function(data){
-				var list = JSON.parse(data);
-				var keys = new Set();
-				$.each(list, function(key, value){
-				    $.each(value, function(key, value){
-				        keys.add(key);
-				    });
-				});
-				$("#muscle").html();
-				var li = "";
-				keys.forEach(function(value){
-					li += "<li class='list-group-item'>";
-					li += "<label for="+value+">"+value+"</label><input type='checkbox' id="+value+" value='"+value+"' class='filter muscle'>";
-					li += "</li>";					
-				}
-				);
-				$("#muscle").html(li);
-			}
-		})
-	}
+	var m			= $("#m").val();
+	var temp		="";
+	var temp2		="";
 	
 	function getboard(pageNum,field,query,category){
 		$.ajax({
@@ -184,45 +145,63 @@
 		});
 	};
 	
-	function find(field,query,category){
+	function setNav(){
 		$.ajax({
-			url:"getlist.board",
-			type:"get",
+			url:"getNavMuscle.board",
+			type:"GET",
 			async:false,
-			data:{p:pageNum,f:field,q:query,c:category},
-			datatype:"json",
 			success:function(data){
-				let table ="";
-				let obj = JSON.parse(data);
-				
-				pageNum = obj.page;
-				pageAll = obj.pageAll;
-				startNum = obj.startNum;
-				lastNum	 = obj.lastNum;
-				
-				$(".table tbody").html("");
-				for(i in obj.list){
-					table +="<tr>";
-					table +="<td class='text-center'>" + obj.list[i].level + "</td>";
-					table +="<td class='text-center'>" + obj.list[i].depth1 + "</td>";
-					table +="<td><a href='detail.board?bno="+obj.list[i].bno+"&c="+category+"'>" + obj.list[i].btitle + "</a></td>";
-					table +="<td>" + obj.list[i].bname + "</td>";
-					table +="<td>" + obj.list[i].bdate + "</td>";
-					table +="<td>" + obj.list[i].bhit + "</td>";
-					table +="</tr>";
+				var list = JSON.parse(data);
+				var keys = new Set();
+				$.each(list, function(key, value){
+				    $.each(value, function(key, value){
+				        keys.add(key);
+				    });
+				});
+				$("#muscle").html();
+				var li = "";
+				keys.forEach(function(value){
+					li += "<li class='list-group-item'>";
+					li += "<label for="+value+">"+value+"</label>";
+					li += "<input type='checkbox' id="+value+" value='"+value+"' class='filter muscle'";
+					if(m == value){li+="checked >";} else {li+=">"}
+					li += "</li>";
 				}
-				$(".table tbody").append(table);
-				setIndex(pageNum,pageAll);
-				setPager(pageNum,startNum,lastNum);
+				);
+				$("#muscle").html(li);
+				setFilterData();
+				setFilter(json,pageNum,field,query);
 			}
-		});
-	};
+		})
+	}
 	
-	function setFilter(json,pageNum){
+	function setFilterData(){
+		filter=true;
+		map.clear();
+		pageNum=1;
+		$(":checkbox").each(function(){
+			if(this.checked){
+				temp = this.value;
+				if($(this).is(".muscle")==true){temp2="depth1";}
+				else{temp2="level";}
+				map.set(temp,temp2);
+				}
+		});
+		json="[";
+		let first = true;
+		map.forEach(function(value,key,map){
+			if(first){first=false;}
+			else{json+=",";}
+			json += "{\""+value+"\":\""+key+"\"}";
+		});
+		json+="]";
+	}
+	
+	function setFilter(json,pageNum,field,query){
 			$.ajax({
 				url:"getlist.board",
 				type:"post",
-				data:{"json":json,"c":category,p:pageNum},
+				data:{"json":json,"c":category,"p":pageNum,"f":field,"q":query},
 				datatype:"json",
 				success:function(data){
 					let table ="";
@@ -267,19 +246,19 @@
 		
 		$(".page").on('click',function(){
 			pageNum=$(this).text();  //num
-			if(filter){setFilter(json,pageNum);}
+			if(filter){setFilter(json,pageNum,field,query);}
 			else getboard(pageNum,field,query,category);
 		});
 		
 		$(".btn-prev").on('click',function(){
 			pageNum=pageNum-1;
-			if(filter){setFilter(json,pageNum);}
+			if(filter){setFilter(json,pageNum,field,query);}
 			else getboard(pageNum,field,query,category);
 		});
 		
 		$(".btn-next").on('click',function(){
 			pageNum=Number.parseInt(pageNum)+1;
-			if(filter){setFilter(json,pageNum);}
+			if(filter){setFilter(json,pageNum,field,query);}
 			else getboard(pageNum,field,query,category);
 		});
 		
