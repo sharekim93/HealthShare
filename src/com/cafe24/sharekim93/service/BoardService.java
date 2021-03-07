@@ -68,7 +68,7 @@ public class BoardService implements BService{
 		return result;
 	}
 	@Override
-	public int getFilteredListCount(String levels, String depths) {
+	public int getFilteredListCount(String levels, String depths,String field,String query) {
 		return 0;
 	}
 }

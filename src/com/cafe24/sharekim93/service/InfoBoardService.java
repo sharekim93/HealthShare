@@ -80,8 +80,8 @@ public class InfoBoardService implements BService{
 		return 0;
 	}
 	@Override
-	public int getFilteredListCount(String levels, String depths) {
-		int count=InfoBoardDAO.getInstance().getFilteredListCount(levels, depths);
+	public int getFilteredListCount(String levels, String depths,String field,String query) {
+		int count=InfoBoardDAO.getInstance().getFilteredListCount(levels, depths,field,query);
 		return count;
 	}
 

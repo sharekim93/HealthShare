@@ -23,5 +23,5 @@ public interface BService {
 	public int reply(Board dto) ;
 	
 	public int deleteBoard(String bno, String bpass) ;
-	public int getFilteredListCount(String levels, String depths);
+	public int getFilteredListCount(String levels, String depths,String field,String query);
 }
