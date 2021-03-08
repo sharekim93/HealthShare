@@ -1,43 +1,94 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
-  <title>열정적인 코딩계의 공룡개발자! 나눔</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-  <style>
-  nav.navbar.gnb   { padding: 10px 0;  margin: 0; }
-  nav.navbar.gnb a { font-size: 22px; font-weight: bold; }
-  nav.navbar.gnb a.first { color: darkorange; }
-  .form-group.myform { border: 1px solid #337ab7; }
-  input#header_search { border: 0 none;  box-shadow: none;  }
-  button.header_form_go { border: 0 none; background-color: #337ab7; color: white; padding: 8px; }
-  nav.navbar.gnb .nav>li>a:focus,   nav.navbar.gnb .nav>li>a:hover {
-    text-decoration: underline;
-    background-color:white; 
-  }
-  
-  
-  nav.navbar.lnb { background-color: #f3f3f3; margin:0;}
-  nav.navbar.lnb  a{ color:#333;   font-weight:bold; }
-  nav.navbar.lnb   nav.navbar.gnb .nav>li>a:focus, nav.navbar.lnb  .nav>li>a:hover {
-    text-decoration: underline;
-    background-color:#ccc; 
-    }
-  
-  footer {height:50px;}
-  footer > div {margin-top:30px;}  
-    
-    #main_panel{margin-top:40px;}
+<meta charset="UTF-8">
+<title>HealthShare</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<style>
+	.navbar {
+		min-width:1280px;
+		margin-left : 0px;
+		margin-bottom: 0;
+		background-color: #fff; 
+		z-index: 9999;
+		border: 0;
+		font-size: 16px !important;
+		line-height: 1.42857143 !important;
+		letter-spacing: 4px;
+		border-radius: 0;
+		box-shadow: 0 2px 6px rgb(0 0 0/ 25%);
+		height: 70px !important;
+	}
+	.navbar li a{
+		color: #626262 !important;
+		margin-top: 12px;
+	}
+	
+	.navbar .navbar-brand {
+		color: #626262 !important;
+		margin-top: 0;
+		padding-top:8px;
+		margin-right:66px;
+	}
+	
+	.navbar .navbar-header{margin-left:20px;}
+	
+	.navbar-nav li a:hover, .navbar-nav li.active a {
+		color: #626262;
+	    font-family: NotoSansMedium;
+	    font-size: 1em;
+	    line-height: 1.47;
+	    height: inherit;
+	    font-weight:400;
+	}
+	.navbar-right{margin-right:66px;}
+	
+	.navbar-default .navbar-toggle {
+		border-color: transparent;
+		color: #fff !important;
+	}
+	 
+	.hidden {
+		position: absolute;
+		top: -999px;
+	}
+	
+	#header {
+		width: 100%;
+		min-width:1280px;
+		height: 70px;
+		/* background-color: skyblue; */
+		/* box-shadow: 0 2px 6px rgb(0 0 0/ 25%); */
+		margin: 0 auto;
+	}
+	
+	#header-container {
+		min-width:1280px;
+		padding-left: 40px;
+		height: 100%;
+		width: 100%; 
+	}
+	
+	#footer {
+		width: 100%;
+		height: 100px;
+		background-color: lightseagreen;
+		margin: 20px 0 0 0;
+	}
+	
+	#main_panel{margin-top:40px;}
 	#login_panel{margin-top:40px; width:400px;}
 	#loginImage{width:90%;}
 	#main {
 		width: 100%;
+		/* height: 1500px; */
 		min-width:1280px;
+		/* background-color: lightcyan; */
 	}
 	#main .section1{
 		width: 100%;
@@ -73,8 +124,7 @@
 		padding: 10px auto;
 	}
 	.sectionWrap{margin:0 auto; width:1200px; padding-top:10px;}
-	
-	.main_search{
+		.main_search{
 		border:2px; 
 		display:flex; 
 		margin:40px auto 0; 
@@ -254,56 +304,42 @@
 	.wrapper h3{margin:0;}
 	.wrapper .container {padding:0; margin-left:50px;}
 
-  }  
-  </style>
-  
+}
+</style>
 </head>
 <body>
-
-<nav class="navbar gnb">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="index"  >HEALTH SHARE</a>
-    </div>
-    <form class="navbar-form navbar-left" action="info.board" method="post">
-      <div class="form-group  myform">
-        <input type="text"  title="검색어를 입력하세요"  id="header_search" name="q"  class="form-control" placeholder="운동방법 검색하기">
-        <button type="submit"  class="header_form_go"><span class="	glyphicon glyphicon-search"></span></button>
-      </div>
-    </form>
-    
-    <ul class="nav navbar-nav navbar-right">
-		<li><a href="info.board" class="first">운동정보</a></li>
-		<li><a href="list.pic">회원사진</a></li>
-		<li><a href="free.board">자유게시판</a></li>
-		<li><a href="secret.board">비밀글게시판</a></li>
-    </ul>
-  </div>
-</nav>
-<nav class="navbar lnb">
-  <div class="container-fluid">
-<!--     <ul class="nav navbar-nav">
-      <li><a href="#">전체</a></li>
-      <li><a href="#">나신사1</a></li>
-      <li><a href="#">나신사2</a></li>
-      <li><a href="#">나신사3</a></li>
-      <li><a href="#">나신사4</a></li>
-    </ul> -->
-	<ul class="nav navbar-nav navbar-right">
-	<c:choose>
-		<c:when test="${!empty sessionScope.id}">
-			<li><a href='mypage.do'><strong>${sessionScope.id}님의 마이페이지</strong></a></li>
-			<li><a href='logout.do'><strong>로그아웃</strong></a></li>
-			<li><a href="index.cs"><strong>고객센터</strong></a></li>
-		</c:when>
-		<c:otherwise>
-			<li><a href='main.do'><strong>로그인</strong></a></li>
-			<li><a href='join_agree.do'><strong>회원가입</strong></a></li>
-			<li><a href="index.cs"><strong>고객센터</strong></a></li>
-		</c:otherwise>
-	</c:choose>
-	</ul>
-  </div>
-</nav> 
- 
- <!-- https://www.w3schools.com/howto/howto_css_subnav.asp -->
+	<header id="header">
+	<div id="header-container row">
+		<nav class="navbar navbar-default">
+			<div class="container-fluid">
+				<div class="navbar-header ">
+					<a class="navbar-brand" href='index'>
+						<img src="${pageContext.request.contextPath}/resources/images/logo.gif" alt="LOGO"/>
+					</a>
+				</div>
+				<div class="gnb">
+				<ul class="nav navbar-nav">
+					<li><a href="info.board"><strong>운동정보</strong></a></li>
+					<li><a href="list.pic"><strong>회원사진</strong></a></li>
+					<li><a href="free.board"><strong>자유게시판</strong></a></li>
+					<li><a href="secret.board"><strong>비밀글게시판</strong></a></li>
+				</ul>
+				<ul class="nav navbar-nav navbar-right">
+				<c:choose>
+					<c:when test="${!empty sessionScope.id}">
+						<li><a href='mypage.do'><strong>${sessionScope.id}님의 마이페이지</strong></a></li>
+						<li><a href='logout.do'><strong>로그아웃</strong></a></li>
+						<li><a href="index.cs"><strong>고객센터</strong></a></li>
+					</c:when>
+					<c:otherwise>
+						<li><a href='main.do'><strong>로그인</strong></a></li>
+						<li><a href='join_agree.do'><strong>회원가입</strong></a></li>
+						<li><a href="index.cs"><strong>고객센터</strong></a></li>
+					</c:otherwise>
+				</c:choose>
+				</ul>
+				</div>
+			</div>
+		</nav>
+	</div>
+</header>

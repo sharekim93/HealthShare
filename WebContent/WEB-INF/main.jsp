@@ -1,8 +1,5 @@
-<%@page import="org.apache.commons.collections4.bag.SynchronizedSortedBag"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@include file="/WEB-INF/inc/header.jsp" %>
-<%@page import="com.cafe24.sharekim93.dao.*" %>
-<%@page import="com.cafe24.sharekim93.entity.*" %>
 <!-- main -->
 <div id="main">
 	<h1 class="hidden">메인</h1>
@@ -20,7 +17,7 @@
 				<select id="muscle" name="muscle" style="height: 34px;">
 					<option value="">운동부위</option>
 				</select>
-				<input type="text" class="form-control" name="q" placeholder="찾고 싶은 운동을 검색하세요">
+				<input type="text" name="q" style="width:300px;" placeholder="찾고 싶은 운동을 검색하세요">
 				<input type="submit" value="검색하기" class="btn btn-default">
 			</form>
 		</div>
@@ -155,7 +152,6 @@
 <link rel="stylesheet" href="https://uicdn.toast.com/chart/latest/toastui-chart.min.css" />
 <script src="https://uicdn.toast.com/chart/latest/toastui-chart.min.js"></script>
 <link rel="stylesheet" href="https://uicdn.toast.com/tui-grid/latest/tui-grid.css" />
-...
 <script src="https://uicdn.toast.com/tui-grid/latest/tui-grid.js"></script>
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=05c5fa9445c4a8378d2e8df0581ace62&libraries=services"></script>
 <script>
