@@ -49,7 +49,7 @@
 		
 		<!-- 글쓰기 -->
 		<div class="text-right" style="margin-top:10px;">
-			<a href="gowrite.board?c=${(!empty param.c)? param.c:'1'}" class="btn btn-default" style="background-color: #555555; color:white;">글쓰기</a>			
+			<a href="gowrite.board?c=${(!empty param.c)? param.c:'1'}" class="btn btn-default" style="background-color: #337ab7; color:white;">글쓰기</a>			
 		</div>
 		
 		<!-- 페이저 -->
