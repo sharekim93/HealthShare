@@ -31,12 +31,12 @@
 					<label for="remember">아이디 기억하기</label>
 				</div>
 				<div class="form-group">
-					<p class="text-right">
-					<input type="submit" class="btn btn-danger" value="로그인" id="submit">
+					<div class="login-btns">
+					<input type="submit" class="btn btn-login" value="로그인" id="submit">
 					<a href="https://kauth.kakao.com/oauth/authorize?client_id=1def83c8f6ac181e4df9db51d15d7f0e&
 							redirect_uri=http://sharekim93.cafe24.com/HealthShare/KakaoLogin&response_type=code">
 					<img src="resources/images/kakao_login_medium_narrow.png"></a>
-					</p>
+					</div>
 				</div>
 			</fieldset>
 		</form>

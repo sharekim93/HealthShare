@@ -14,11 +14,11 @@
 							<input type="text" id="mid" name="mid" class="form-control" value="${cookie.join_id.value}" placeholder="아이디를 입력하세요"/>		
 						</div>
 						<div class="col-sm-8">
-							<input type="button" id="checkId" name="id_check" value="아이디중복확인" style="height:33px;">
+							<input type="button" id="checkId" name="id_check" class="btn btn-default" value="아이디중복확인">
 						</div>
 					</div>
 				<div>
-					<p class="text-left" id="idCheckResult" style="color:orange;margin-top: 7px; margin-bottom: 7px;">아이디 중복확인을 해주세요</p>
+					<p class="text-left" id="idCheckResult" style="color:royalblue;margin-top: 7px; margin-bottom: 7px;">아이디 중복확인을 해주세요</p>
 				</div>
 				</div>
 				<div class="form-group">
@@ -44,7 +44,7 @@
 							<input type="text" id="zonecode" name="zonecode" title="우편번호" placeholder="우편번호" class="form-control">
 						</div>
 						<div class="col-sm-8">
-							<input type="button" id="postcode" value="우편번호찾기" style="height:33px;" />
+							<input type="button" id="postcode" value="우편번호찾기" class="btn btn-default" />
 						</div>
 					</div>
 					<div class="row" style="margin-top:5px;">

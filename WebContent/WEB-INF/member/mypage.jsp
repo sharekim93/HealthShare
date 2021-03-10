@@ -38,9 +38,9 @@
 		</tbody>
 		</table>
 		<div class="text-center">
-			<input type="button" value="회원정보수정" class="btn btn-danger" onclick="location.href='goEditPage.do'">
-			<input type="button" value="비밀번호수정" class="btn btn-danger" onclick="location.href='goPassPage.do'">
-			<input type="button" value="탈퇴"		  id="withdrawal"	name="edit" class="btn btn-danger">
+			<input type="button" value="회원정보수정" class="btn btn-default" onclick="location.href='goEditPage.do'" style="margin-top:10px;background-color:#337ab7;color:white;">
+			<input type="button" value="비밀번호수정" class="btn btn-default" onclick="location.href='goPassPage.do'" style="margin-top:10px;background-color:#337ab7;color:white;">
+			<input type="button" value="탈퇴"		  id="withdrawal"	name="edit" class="btn btn-default" style="margin-top:10px;background-color:#337ab7;color:white;">
 		</div>
 		<form action="WithdrawAction.do" id="delete" method="post">
 			<input type="hidden" name="mpass" id="mpass" value="">

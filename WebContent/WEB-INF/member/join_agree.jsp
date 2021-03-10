@@ -20,8 +20,7 @@
 			</fieldset>
 			
 			<fieldset class="form-group text-center">
-				<legend class="myhidden">동의 버튼</legend>
-				<input type="submit" value="동의하기" class="btn btn-danger" name="agree" id="submit">
+				<input type="submit" value="동의하기" class="btn btn-login" name="agree" id="submit">
 			</fieldset>
 			<fieldset>
 				<input type="hidden" name="kakaoid" value="${param.id}">

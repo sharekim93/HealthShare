@@ -19,7 +19,7 @@
 		</tbody>
 		</table>
 		<div class="text-right">
-			<input type="button" onclick="location.href='main.do'" value="LOGIN" id="login" class="btn btn-danger">
+			<input type="button" onclick="location.href='main.do'" value="LOGIN" id="login" class="btn btn-blue">
 		</div>
 	</div>
 </body>

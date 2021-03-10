@@ -16,7 +16,7 @@
 						<td>우편번호</td>
 						<td>
 							<input type="text" id="zonecode" name="zonecode" value="${member.zonecode}">
-							<input type="button" id="postcode" value="우편번호찾기"/>
+							<input type="button" id="postcode" class="btn btn-default" value="우편번호찾기"/>
 						</td>
 					</tr>
 					<tr><td>주소</td><td><input type="text" name="address1" id="address1" value="${member.address1}" style="width:450px;"></td></tr>			
@@ -62,8 +62,8 @@
 				</tbody>
 			</table>
 			<div class="text-center">
-				<input type="submit" id="submit" value="수정" name="edit" class="btn btn-danger" >
-				<a href="mypage.do" id="before" class="btn btn-danger" >이전</a>
+				<input type="submit" id="submit" value="수정" name="edit" class="btn btn-default" style="background-color:#337ab7;color:white;" >
+				<a href="mypage.do" id="before" class="btn btn-default" style="background-color:#337ab7;color:white;" >이전</a>
 			</div>
 			</fieldset>
 		</form>

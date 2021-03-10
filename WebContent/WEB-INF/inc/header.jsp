@@ -37,6 +37,49 @@
     #main_panel{margin-top:40px;}
 	#login_panel{margin-top:40px; width:400px;}
 	#loginImage{width:90%;}
+	.btn-login {
+		width:183px;
+		height:45px;
+		background-color:royalblue;
+		color:white;
+		font-size:15px;
+		font-weight:400;
+		margin-right:2px;
+	}
+	.btn-login:hover{
+		color:white;
+		border:white;
+	}
+	.login-btns{display:flex;}
+	.btn-blue{
+		height:34px;
+		width:116px;
+		background-color:#337ab7;
+		color:white;
+		font-size:15px;
+		font-weight:400;
+		margin-right:2px;
+	}
+	
+	.btn-blue:hover{
+		height:34px;
+		width:116px;
+		color:white;
+		border:white;
+	}
+	
+	#checkId{
+		height:33px;
+		background-color:#f3f3f3;
+		font-weight:500;
+	}
+	
+	#postcode{
+		height:33px;
+		background-color:#f3f3f3;
+		font-weight:500;
+	}
+	
 	#main {
 		width: 100%;
 		min-width:1280px;

@@ -13,8 +13,8 @@
 				</tbody>
 			</table>
 			<div class="text-center">
-				<a href="mypage.do" id="before" class="btn btn-danger" >이전</a>
-				<input type="submit" id="submit" value="비밀번호 수정하러 가기" class="btn btn-danger" >
+				<a href="mypage.do" id="before" class="btn btn-default" style="background-color:#337ab7;color:white;" >이전</a>
+				<input type="submit" id="submit" value="비밀번호 수정하러 가기" class="btn btn-default" style="background-color:#337ab7;color:white;">
 			</div>
 			</fieldset>
 		</form>
