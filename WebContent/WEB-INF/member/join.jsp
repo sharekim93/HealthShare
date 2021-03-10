@@ -94,7 +94,7 @@
 					</select>
 				</div>
 				<div class="form-group">
-					<input type="submit" class="btn btn-primary form-control" name="join" value="회원가입하러가기" id="submit" disabled>
+					<input type="submit" class="btn btn-primary form-control" name="join" value="회원가입하러가기" id="submit" disabled data-toggle="tooltip" title="아이디 중복확인 후 가입이 가능합니다.">
 				</div>
 				<div class="form-group">
 				<a class="btn btn-default form-control" href="javascript:history.go(-1);">이전</a>
