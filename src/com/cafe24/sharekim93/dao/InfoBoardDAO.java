@@ -72,6 +72,7 @@ public class InfoBoardDAO {
 								  rset.getString("bname"),
 								  rset.getString("bcontent").replace("\r\n", "<br>")
 								  );
+				board.setBdate(rset.getString("bdate").split(" ")[0]);
 				stmt.close();
 				stmt = conn.prepareStatement("UPDATE mvcboard5 SET BHIT=BHIT+1 WHERE BNO=?");
 				stmt.setInt(1, dto.getBno());
