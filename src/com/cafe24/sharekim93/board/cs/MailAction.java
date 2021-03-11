@@ -20,8 +20,7 @@ public class MailAction implements CSBoardAction{
 		String from = request.getParameter("from");
 		MailNaver mail = new MailNaver();
 		mail.setSubject("[From 포트폴리오]"+title);
-		mail.setContent(content);
-		mail.setFrom(from);
+		mail.setContent("회신 받을 이메일 주소 : "+from +"<br/><br/>"+content);
 		mail.setTo("sksyag@naver.com");
 		int result = mail.sendMail();
 		
