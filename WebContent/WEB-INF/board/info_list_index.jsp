@@ -105,9 +105,9 @@
 				var li = "";
 				keys.forEach(function(value){
 					li += "<li class='list-group-item'>";
-					li += "<input type='checkbox' id="+value+" value='"+value+"' class='filter index_muscle'";				
+					li += "<input type='checkbox' id='"+value+"' value='"+value+"' class='filter index_muscle'";				
 					if(m == value){li+="checked >";} else {li+=">"}
-					li += "<label for="+value+">"+value+"</label>";	
+					li += "<label for='"+value+"'>"+value+"</label>";	
 					li += "</li>";
 				}
 				);
