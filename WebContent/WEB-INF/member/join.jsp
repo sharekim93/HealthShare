@@ -3,8 +3,8 @@
 <body>
 	<div class="container panel" id="main_panel">
 		<h3>회원가입</h3>
-		<br/>
 		<h5>(*)은 필수 입력 사항입니다.</h5>
+		<br/>
 		<form action="joinAction.do" method="post">
 			<fieldset>
 				<legend>필수정보입력</legend>
@@ -36,7 +36,7 @@
 				</div>
 				<div class="form-group">
 					<label for="memail">(*) 이메일</label>
-					<input type="text" id="memail" name="memail" class="form-control" placeholder="이메일을 입력하세요">
+					<input type="email" id="memail" name="memail" class="form-control" placeholder="이메일을 입력하세요">
 				</div>
 				<div class="form-group">
 					<label for="row">(*) 주소</label>

@@ -4,6 +4,7 @@
 	<div class="container" id="main_panel">
 		<h3>회원 약관 동의</h3>
 		<h5>(*)은 필수 입력 사항입니다.</h5>
+		<br/>
 		<form action="join.do" method="post" >
 			<fieldset class="form-group">
 				<legend>서비스 약관 동의</legend>
