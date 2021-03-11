@@ -1,7 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@include file="/WEB-INF/inc/header.jsp" %>
 	<div class="wrapper">
+	<h2 class="hidden">운동정보</h2>
 		<div class="panel-group vertical-nav">
+			<h3 class="hidden">운동필터</h3>
 			<div class="panel panel-default">
 				<div class="panel-heading">
 					<h4 class="panel-title">난이도별</h4>
@@ -66,7 +68,6 @@
 		</div>
 		</div>
 	</div>
-
 	<!-- hidden value -->
 	<form id="hidden">
 		<input type="hidden" name="bpass" id="bpass" value="">

@@ -2,7 +2,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <body>
 	<div class="container panel" id="main_panel">
-		<h3>FORM BASIC-JOIN</h3>
+		<h3>회원가입</h3>
+		<br/>
 		<h5>(*)은 필수 입력 사항입니다.</h5>
 		<form action="joinAction.do" method="post">
 			<fieldset>

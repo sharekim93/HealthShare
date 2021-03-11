@@ -2,18 +2,18 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <body>
 	<div class="container" id="main_panel">
-		<h3>FORM BASIC-JOIN</h3>
+		<h3>회원 약관 동의</h3>
 		<h5>(*)은 필수 입력 사항입니다.</h5>
 		<form action="join.do" method="post" >
 			<fieldset class="form-group">
-				<legend>Company 서비스 약관 동의</legend>
+				<legend>서비스 약관 동의</legend>
 			    <textarea rows ="10" class="form-control" id="disabledInput" disabled><%@include file="../inc/agree1.txt" %></textarea>
 			    <br>
 			    <p class="text-right">서비스 약관에 동의합니다<input type="checkbox" id="chkbox" style="margin-left:10px"/></p>
 			</fieldset>
 		
 			<fieldset class="form-group">
-				<legend>Company 개인정보 수집 및 이용 동의</legend>
+				<legend>개인정보 수집 및 이용 동의</legend>
 			    <textarea rows ="10" class="form-control" id="disabledInput" disabled><%@include file="../inc/agree2.txt" %></textarea>
 			    <br>
 			    <p class="text-right">개인정보 수집 및 이용에 동의합니다<input type="checkbox" id="chkbox2" style="margin-left:10px"></p>

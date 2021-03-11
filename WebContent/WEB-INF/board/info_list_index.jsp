@@ -1,7 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
 	<div class="sectionWrap">
-	<h5 style="color:gray;">원하시는 항목을 체크해보세요</h5>
+	<h2 class="hidden">운동정보 미리보기</h2>
+		<p style="color:gray;">원하시는 항목을 체크해보세요</p>
 		<div class="panel-group">
 			<div class="panel panel-default index_filter">
 				<div class="panel-heading">

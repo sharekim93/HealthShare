@@ -101,6 +101,7 @@
 	
 	
 	<section class="video_section">
+		<h2 class="hidden">알아두면 도움이 되는 운동영상</h2>
 		<div class="title">알아두면 도움이 되는 운동영상</div>
 		<div class="sectionWrap">
 
@@ -179,7 +180,7 @@
 	
 	<!-- Section 4 -->
 	<section class="section4">
-		<h2 class="hidden">우리동네 헬스장/공지사항/BMI계산기</h2>
+		<h2 class="hidden">우리동네 헬스장/BMI계산기/공지사항</h2>
 		
 		<div class="sectionWrap">
 		
