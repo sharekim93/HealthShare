@@ -36,7 +36,7 @@ public class BMICalculator extends HttpServlet{
 		if(bmi>=35) {result="3단계 비만(고도비만)";}
 		else if(bmi>30) {result="2단계 비만";}
 		else if(bmi>25) {result="1단계 비만";}
-		else if(bmi>23) {result="과체중(비만 전 단계)";}
+		else if(bmi>23) {result="과체중";}
 		else {result="정상";}
 		
 		result+=" 입니다";
