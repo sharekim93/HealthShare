@@ -243,7 +243,7 @@
 		</div><!-- End Wrap -->
 	</section><!-- End Section4 -->
 		
-	<c:if test="${!empty cookie.subpop}">
+	<c:if test="${empty cookie.subpop}">
 	<div class="container panel subpop">
 		<h3 class="panel-heading">공지사항</h3>
 		<p><img src="${pageContext.request.contextPath}/resources/QRCodeImg.jpg" alt="QRcode"></p>
