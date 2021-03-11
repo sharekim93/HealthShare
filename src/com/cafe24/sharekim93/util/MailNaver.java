@@ -37,10 +37,10 @@ public class MailNaver {
 		subject  = "메일제목";
 		content  = "메일내용";
 		host	 = "smtp.naver.com";
-		from	 = "sharekim93@naver.com";
-		user 	 = "sharekim93@naver.com";//@naver.com까지 적기
-		password = "sharekim93!";
-		to 		 = "sksyag@naver.com";
+		from	 = "*";
+		user 	 = "*";//@naver.com까지 적기
+		password = "*";
+		to 		 = "*";
 		result	 = -1;
 	}
 	public int sendMail() throws UnsupportedEncodingException {		

@@ -357,7 +357,9 @@
     left: 10%;
     width: 25%;
     color: #333;
-    background-color: #f3f3f3;
+    color: white;
+    background-color: rgba(0,0,0,0.8);
+    z-index: 10;
 	}
 	
 	.container.panel.subpop > h3{
@@ -393,11 +395,12 @@
     	color: #f3f3f3;
     }
     .search_suggest > form > input[type="button"]{
-		border-radius: 15px;
-	    padding: 3px 10px;
-	    background-color: white;
-	    font-size: 14px;
-	    border-color: royalblue;
+	    border-radius: 15px;
+	    padding: 5px 10px;
+	    background-color: crimson;
+	    font-size: 15px;
+	    border: 2px solid dimgray;
+	    color: white;
     }
     .modal-content{padding:20px;}
     
