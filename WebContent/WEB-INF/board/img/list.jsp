@@ -12,6 +12,7 @@
 				<div class="thumbnail well">
 					<a data-toggle="modal" data-target="#myModal${i.bno}" style="color:black;text-decoration:none;">
 					<img src="${pageContext.request.contextPath}/upload/${i.img}" alt="${i.img}" style="height:200px;">
+					<br/>
 			        <span><strong>${i.btitle}</strong></span><br/><br/>
 			        <span>${i.bname}</span><br/><br/>
 			        <span>${i.bdate}</span><br/><br/>
