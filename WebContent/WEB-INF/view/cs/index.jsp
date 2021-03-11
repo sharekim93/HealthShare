@@ -15,10 +15,10 @@
 	<div>
 	<h3 class="panel-heading" style="margin-top:50px;">메일 문의</h3>
 	<table class="table table-striped">
-	<caption>문의 내용을 작성해주시면 관리자 이메일로 내용이 전달됩니다. 받아보실 연락처를 남겨주세요.</caption>
+	<caption>문의 내용을 작성해주시면 관리자 이메일로 내용이 전달됩니다. 연락 받아보실 이메일을 반드시 남겨주세요.</caption>
 	<tbody>
 		<tr><th scope="row">제목</th><td><input type="text" id="title" class="form-control"></td></tr> 
-		<!-- <tr><th scope="row">이메일</th><td><input type="text" id="from" class="form-control"></td></tr> --> 
+		<tr><th scope="row">이메일</th><td><input type="text" id="from" class="form-control"></td></tr> 
 		<tr><th scope="row">내용</th><td><textarea class="form-control" id="content" rows="10" /></textarea></td></tr>
 		<tr><td colspan="2" class="text-right"><input type="button" value="보내기" id="submit" class="btn btn-primary"></td></tr>
 	</tbody>
@@ -32,15 +32,19 @@
 		CKEDITOR.replace( 'content' );
 		
 		$("#submit").on("click",function(){
-			$.ajax({
-				url:"sendmail.cs",
-				type:"get",
-				data:{title:$("#title").val(),content:CKEDITOR.instances.content.getData(),from:$("#from").val()},
-				success:function(data){
-					if(data==1){alert('메일 발송에 성공 했습니다.');location.href="index"}
-					else {alert('메일 발송에 실패 했습니다.');console.log(data);}
-				}
-			})
+			
+			if($("#title").val() == ""){alert("제목에 빈칸이 입력되었습니다.");$("#title").focus();return false;}
+			if($("#from").val() == ""){alert("이메일에 빈칸이 입력되었습니다.");$("#from").focus();return false;}
+			if(CKEDITOR.instances.content.getData() == ""){alert("내용에 빈칸이 입력되었습니다.");$("#content").focus();return false;}
+				$.ajax({
+					url:"sendmail.cs",
+					type:"get",
+					data:{title:$("#title").val(),content:CKEDITOR.instances.content.getData(),from:$("#from").val()},
+					success:function(data){
+						if(data==1){alert('메일 발송에 성공 했습니다.');location.href="index"}
+						else {alert('메일 발송에 실패 했습니다.');console.log(data);}
+					}
+				});
 		});
 	
 		function getFaq(){
