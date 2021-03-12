@@ -105,7 +105,6 @@ public class MemberDAO {
 				member = new Member(rset.getString("mid"), rset.getString("mname"),rset.getString("memail"),
 									rset.getString("mdate"), rset.getString("minterest"), rset.getString("msns"));
 			};
-			System.out.println(member);
 		}
 		catch(Exception e){e.printStackTrace();}
 		finally {

@@ -38,15 +38,10 @@ public class BReplyAction implements BoardAction {
 		if(c.equals("5")) {service = new InfoBoardService();}
 		
 		set.setBno(bno);
-		System.out.println("bno :"+bno);
 		set.setBname(bname);
-		System.out.println("bname : "+bname);
 		set.setBpass(bpass);
-		System.out.println("bpass : "+bpass);
 		set.setBtitle(btitle);
-		System.out.println("Btitle : "+btitle);
 		set.setBcontent(bcontent);
-		System.out.println("bcontent : "+bcontent);
 		int result = service.reply(set);
 		if(result>0) {out.print("<script>alert('답변성공');location.href='list.board?c="+c+"';</script>");}
 		else {out.print("<script>alert('답변실패');history.go(-1);</script>");}
