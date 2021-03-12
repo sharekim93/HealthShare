@@ -71,7 +71,9 @@ public class Board4DAO {
 			rset= stmt.executeQuery();
 			while(rset.next()) {
 				String title = "";
+				System.out.println("bhidden : "+rset.getInt("bhidden"));
 				if(rset.getInt("bhidden")==1) {title = "비밀글입니다";} else{title =rset.getString("btitle");}
+				System.out.println("title : "+title);
 				Board board = new Board(rset.getInt("bno"),
 										title,
 										rset.getString("bname"),
@@ -116,8 +118,8 @@ public class Board4DAO {
 		Connection conn = null; PreparedStatement stmt =null; int result = -1;
 		try {
 			conn = getConnection();
-			stmt = conn.prepareStatement("INSERT INTO mvcboard4	(BNAME, BPASS, BTITLE, BCONTENT, BHIT, BIP, BCATEGORY, BGROUP, BSTEP, BINDENT)"
-					+ "					   VALUES			(? , ? , ? , ? , 0 , ? , 'BCATEGORY' ,"
+			stmt = conn.prepareStatement("INSERT INTO mvcboard4	(BNAME, BPASS, BTITLE, BCONTENT, BHIT, BIP, BCATEGORY,BHIDDEN , BGROUP, BSTEP, BINDENT)"
+					+ "					   VALUES			(? , ? , ? , ? , 0 , ? , 'BCATEGORY' ,?,"
 					+ "					 					IFNULL((SELECT MAX(BGROUP) FROM mvcboard4 a),0)+1,"
 					+ "					 					(IFNULL((SELECT MAX(BGROUP) FROM mvcboard4 b),0)+1)*1000,0)");
 			stmt.setString(1, dto.getBname());
@@ -125,6 +127,7 @@ public class Board4DAO {
 			stmt.setString(3, dto.getBtitle());
 			stmt.setString(4, dto.getBcontent());
 			stmt.setString(5, dto.getBip());
+			stmt.setInt(6, dto.getBhidden());
 			result = stmt.executeUpdate();
 		}
 		catch(Exception e) {e.printStackTrace();}

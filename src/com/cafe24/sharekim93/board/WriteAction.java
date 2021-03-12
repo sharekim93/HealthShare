@@ -19,20 +19,20 @@ public class WriteAction implements BoardAction {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		PrintWriter out = response.getWriter();
+		
 		String bname = request.getParameter("bname");
 		String bpass = request.getParameter("bpass");
 		String btitle = request.getParameter("btitle");
 		String bcontent = request.getParameter("bcontent");
 		String bip = InetAddress.getLocalHost().getHostAddress();
-		
-		PrintWriter out = response.getWriter();
+		String bhidden_ = request.getParameter("bhidden");
 		String category="1";
 		String category_ = request.getParameter("c");
-		if(category_!=null&&category_!="") {category=category_;}
-		
 		int bhidden=0;
-		System.out.println(bhidden);
-		String bhidden_ = request.getParameter("bhidden");
+		
+		if(category_!=null&&category_!="") {category=category_;}
 		if(bhidden_!=null&&bhidden_!="") {bhidden=Integer.parseInt(bhidden_);}
 		
 		int result=-1;
@@ -44,8 +44,7 @@ public class WriteAction implements BoardAction {
 		Board dto = new Board();
 		dto.setBname(bname);
 		dto.setBpass(bpass);
-		if(bhidden==1) {dto.setBtitle("비밀글입니다");}
-		else{dto.setBtitle(btitle);}
+		dto.setBtitle(btitle);
 		dto.setBcontent(bcontent);
 		dto.setBip(bip);
 		dto.setBhidden(bhidden);
