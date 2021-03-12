@@ -25,8 +25,10 @@
 		</div>
 		<div class="text-right" style="margin-top:20px;">
 			<c:if test="${!(param.c eq 5)}">
+			<c:if test="${b.mid eq sessionScope.id}">
 			<input type="button" class="btn btn-danger" id="d_update" value="수정">
 			<input type="button" class="btn btn-danger" id="d_delete" value="삭제">
+			</c:if>
 			<c:if test="${!(param.c eq '2')}"><input type="button" class="btn btn-danger" id="d_reply" value="답글달기"></c:if>
 			<a href="list.board?c=${param.c}" class="btn btn-primary">목록보기</a>
 			</c:if>

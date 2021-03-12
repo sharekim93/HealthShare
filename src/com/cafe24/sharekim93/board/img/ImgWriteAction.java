@@ -23,7 +23,6 @@ public class ImgWriteAction implements ImgBoardAction {
 		File path = new File(realPath);
 		if(!path.exists()) {path.mkdirs();}
 		
-		System.out.println(realPath);
 		MultipartRequest multi = new MultipartRequest(request, realPath,1024*1024*5,"UTF-8",null);
 		PrintWriter out = response.getWriter();
 		
@@ -33,7 +32,11 @@ public class ImgWriteAction implements ImgBoardAction {
 		String img = multi.getFilesystemName("file");
 		String bcontent = multi.getParameter("bcontent");
 		String bip = InetAddress.getLocalHost().getHostAddress();
-				
+		Object mid_ = request.getSession().getAttribute("id");
+
+		String mid=null;
+		
+		if(mid_!=null) {mid = (String)mid_;}
 		int result=-1;
 		Board dto = new Board();
 		dto.setBname(bname);
@@ -42,6 +45,7 @@ public class ImgWriteAction implements ImgBoardAction {
 		dto.setImg(img);
 		dto.setBcontent(bcontent);
 		dto.setBip(bip);
+		dto.setMid(mid);
 		result=ImageBoardDAO.getInstance().createBoard(dto);
 		
 		if(result>0) {out.println("<script>alert('글 작성 성공');location.href='list.pic';</script>");}

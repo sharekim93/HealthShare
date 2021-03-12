@@ -28,13 +28,15 @@ public class WriteAction implements BoardAction {
 		String bcontent = request.getParameter("bcontent");
 		String bip = InetAddress.getLocalHost().getHostAddress();
 		String bhidden_ = request.getParameter("bhidden");
+		Object mid_ = request.getSession().getAttribute("id");
 		String category="1";
 		String category_ = request.getParameter("c");
 		int bhidden=0;
+		String mid = null;
 		
 		if(category_!=null&&category_!="") {category=category_;}
 		if(bhidden_!=null&&bhidden_!="") {bhidden=Integer.parseInt(bhidden_);}
-		
+		if(mid_!=null) {mid = String.valueOf(mid_);}
 		int result=-1;
 		BService service = new BoardService();
 		if(category.equals("2")) {service = new Board2Service();}
@@ -48,6 +50,7 @@ public class WriteAction implements BoardAction {
 		dto.setBcontent(bcontent);
 		dto.setBip(bip);
 		dto.setBhidden(bhidden);
+		dto.setMid(mid);
 		result=service.createBoard(dto);
 		
 		if(result>0) {out.println("<script>alert('글 작성 성공');location.href='list.board?c="+category+"';</script>");}

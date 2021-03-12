@@ -32,8 +32,10 @@
 		        <p>${i.bcontent}</p>
 		      </div>
 		      <div class="modal-footer">
+		      	<c:if test="${i.mid eq sessionScope.id}">
 		        <button type="button" class="btn btn-info update" value="${i.bno}">수정</button>
 		        <button type="button" class="btn btn-danger delete" value="${i.bno}">삭제</button>
+		        </c:if>
 		        <button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
 		      </div>
 		    </div>		

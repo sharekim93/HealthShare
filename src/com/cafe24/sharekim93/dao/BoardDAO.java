@@ -115,15 +115,16 @@ public class BoardDAO {
 		Connection conn = null; PreparedStatement stmt =null; int result = -1;
 		try {
 			conn = getConnection();
-			stmt = conn.prepareStatement("INSERT INTO mvcboard1	(BNAME, BPASS, BTITLE, BCONTENT, BHIT, BIP, BCATEGORY, BGROUP, BSTEP, BINDENT)"
+			stmt = conn.prepareStatement("INSERT INTO mvcboard1	(BNAME, BPASS, BTITLE, BCONTENT, BHIT, BIP, BCATEGORY, BGROUP, BSTEP, BINDENT,mid)"
 					+ "					   VALUES			(? , ? , ? , ? , 0 , ? , 'BCATEGORY' ,"
 					+ "					 					IFNULL((SELECT MAX(BGROUP) FROM mvcboard1 a),0)+1,"
-					+ "					 					(IFNULL((SELECT MAX(BGROUP) FROM mvcboard1 b),0)+1)*1000,0)");
+					+ "					 					(IFNULL((SELECT MAX(BGROUP) FROM mvcboard1 b),0)+1)*1000,0,?)");
 			stmt.setString(1, dto.getBname());
 			stmt.setString(2, dto.getBpass());
 			stmt.setString(3, dto.getBtitle());
 			stmt.setString(4, dto.getBcontent());
 			stmt.setString(5, dto.getBip());
+			stmt.setString(6, dto.getMid());
 			result = stmt.executeUpdate();
 		}
 		catch(Exception e) {e.printStackTrace();}
@@ -153,6 +154,7 @@ public class BoardDAO {
 								  );
 				board.setBhidden(rset.getInt("bhidden"));
 				board.setBdate(rset.getString("bdate").substring(0, rset.getString("bdate").lastIndexOf(":")));
+				board.setMid(rset.getString("mid"));
 				stmt.close();
 				stmt = conn.prepareStatement("UPDATE mvcboard1 SET BHIT=BHIT+1 WHERE BNO=?");
 				stmt.setInt(1, dto.getBno());

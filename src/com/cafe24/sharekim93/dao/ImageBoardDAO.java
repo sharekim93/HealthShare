@@ -31,13 +31,14 @@ public class ImageBoardDAO {
 		Connection conn = null; PreparedStatement stmt =null; int result = -1;
 		try {
 			conn = getConnection();
-			stmt = conn.prepareStatement("INSERT INTO mvcboard3 (BNAME,BPASS,BTITLE,BCONTENT,BIP,IMG) values (?,?,?,?,?,?)");
+			stmt = conn.prepareStatement("INSERT INTO mvcboard3 (BNAME,BPASS,BTITLE,BCONTENT,BIP,IMG,mid) values (?,?,?,?,?,?,?)");
 			stmt.setString(1, dto.getBname());
 			stmt.setString(2, dto.getBpass());
 			stmt.setString(3, dto.getBtitle());
 			stmt.setString(4, dto.getBcontent());
 			stmt.setString(5, dto.getBip());
 			stmt.setString(6, dto.getImg());
+			stmt.setString(7, dto.getMid());
 			result = stmt.executeUpdate();
 		}
 		catch(Exception e) {e.printStackTrace();}
@@ -66,6 +67,7 @@ public class ImageBoardDAO {
 								  );
 				board.setImg(rset.getString("img"));
 				board.setBdate(rset.getString("bdate").substring(0, rset.getString("bdate").lastIndexOf(' ')));
+				board.setMid(rset.getString("mid"));
 			}
 			stmt.close();
 			stmt = conn.prepareStatement("UPDATE mvcboard3 SET BHIT=BHIT+1 WHERE BNO=?");
@@ -205,6 +207,7 @@ public class ImageBoardDAO {
 										rset.getInt("bhit"));
 				board.setImg(rset.getString("IMG"));
 				board.setBcontent(rset.getString("bcontent"));
+				board.setMid(rset.getString("mid"));
 				list.add(board);
 			}
 		}

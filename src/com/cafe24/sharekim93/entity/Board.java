@@ -15,6 +15,7 @@ public class Board {
 	private String level;
 	private String depth1;
 	private String depth2;
+	private String mid;
 	
 	public Board() {
 		// TODO Auto-generated constructor stub
@@ -188,4 +189,13 @@ public class Board {
 	public void setLevel(String level) {
 		this.level = level;
 	}
+
+	public String getMid() {
+		return mid;
+	}
+
+	public void setMid(String mid) {
+		this.mid = mid;
+	}
+	
 }
