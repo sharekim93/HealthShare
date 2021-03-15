@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>열정적인 코딩계의 공룡개발자! 나눔</title>
+  <title>다양한 운동정보 HealthShare</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
@@ -355,7 +355,7 @@
     position: fixed;
     top: 8%;
     left: 10%;
-    width: 25%;
+    width: 380px;
     color: #333;
     color: white;
     background-color: rgba(0,0,0,0.8);
