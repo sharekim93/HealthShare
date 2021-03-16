@@ -95,7 +95,7 @@
 					</select>
 				</div>
 				<div class="form-group">
-					<input type="submit" class="btn btn-primary form-control" name="join" value="회원가입하러가기" id="submit" disabled data-toggle="tooltip" title="아이디 중복확인 후 가입이 가능합니다.">
+					<input type="submit" class="btn btn-primary form-control" name="join" value="회원가입하러가기" id="submit">
 				</div>
 				<div class="form-group">
 				<a class="btn btn-default form-control" href="javascript:history.go(-1);">이전</a>
@@ -107,6 +107,8 @@
 <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script>
 	$(document).ready(function(){
+		var usableId = -1;
+		
 		$("#submit").click(function(){
 			if($("#mid").val()==""){alert("아이디를 확인해주세요");$("#mid").focus();return false;}
 			if($("#mname").val()==""){alert("이름을 확인해주세요");$("#mname").focus();return false;}
@@ -117,6 +119,7 @@
 			if($("#address2").val()==""){alert("상세 주소를 입력해주세요");$("#address2").focus();return false;}
 			if($("#memail").val()==""){alert("이메일을 확인해주세요");$("#memail").focus();return false;}
 			if(!$("input:checkbox[name='fourteen']:checked").length){alert("만 14세 이상만 가입이 가능합니다.");return false;}
+			if(usableId<0){alert('아이디 확인 후 가입 가능합니다.');$("#checkId").focus();return false;}
 		});
 		
 		$("#checkId").click(function(){
@@ -127,8 +130,8 @@
 			method:"get",
 			data:{mid:id},
 			success:function(data){
-				if(data==0){$("#idCheckResult").html("사용 가능한 아이디입니다.");document.getElementById('submit').disabled= false;}
-				else{$("#idCheckResult").html("이미 사용중인 아이디입니다.");document.getElementById('submit').disabled= true;}
+				if(data==0){$("#idCheckResult").html("사용 가능한 아이디입니다.");usableId=true;}
+				else{$("#idCheckResult").html("이미 사용중인 아이디입니다.");}
 			}
 		});
 		}
