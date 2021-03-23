@@ -3,8 +3,7 @@
 <c:set var="m" value="${member}"/>
 <body>
 	<div class="container panel" id="main_panel">
-		<h3>FORM BASIC-JOIN</h3>
-		<h5>회원가입을 축하합니다.</h5>
+		<h3>회원가입을 축하합니다.</h3>
 		<table class="table table-striped">
 		<caption style="padding-left:0px;">회원가입완료</caption>
 		<tbody>
